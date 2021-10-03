@@ -1,0 +1,18 @@
+.types {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    ul {
+        display: flex;
+        align-items: center;
+
+        li {
+            margin: 0 10px;
+            padding: 2px 8px;
+            border-radius: 2px;
+            background: $cor1;
+        }
+    }
+}

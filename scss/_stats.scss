@@ -1,18 +1,21 @@
 .stats {
     margin-bottom: 20px;
     h2 {
-        margin-bottom: 22px;
+        margin-bottom: 1rem;
     }
 
     ul {
+        
         li {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 6px 8px;
             border-bottom: 0.4px solid $cor3;
-
-
+            align-self: center;
+            div {
+                font-size: 1.1rem;
+            }
         }
         li:last-child {
             border-bottom: none;
