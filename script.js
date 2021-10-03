@@ -37,10 +37,11 @@ function procura() {
         defesa = document.querySelector('.defesa-p'),
         defesaEsp = document.querySelector('.defesa-esp-p'),
         velocidade = document.querySelector('.velocidade-p'),
+        ataques = document.querySelector('.ataques ul'),
         skills = document.querySelector('.skills ul'),
         loc = document.querySelector('.lop');
 
-    [loc, img, vida, ataque, ataqueEsp, defesa, defesaEsp, velocidade].forEach(e => e.innerHTML = '');
+    [loc, img, vida, ataque, ataqueEsp, defesa, defesaEsp, velocidade, ataques].forEach(e => e.innerHTML = '');
 
     if (valor == ultimoValor) {
         loading();
@@ -48,7 +49,7 @@ function procura() {
             .then(r => r.json())
             .then(r => {
 
-                //foto
+                //FOTOS
                 for (let i = 0; i < 1; i++) {
                     let fotos = [r.sprites.front_default, r.sprites.back_default];
                     fotos.forEach(e => {
@@ -58,7 +59,7 @@ function procura() {
                     })
                 }
 
-                //tipo
+                //TIPOS
                 r.types.forEach(e => {
                     let limpeza = e.type.name.charAt(0).toUpperCase() + e.type.name.slice(1);
                     let tipos = document.createElement('li');
@@ -66,38 +67,38 @@ function procura() {
                     tipo.append(tipos)
                 })
 
-
-                //vida
+                // STATUS
+                //VIDA
                 let hp = document.createElement('p');
                 hp.innerText = r.stats[0].base_stat;
                 vida.append(hp)
 
-                //ataque
+                //ATAQUE
                 let atk = document.createElement('p');
                 atk.innerText = r.stats[1].base_stat;
                 ataque.append(atk)
 
-                //ataque especial
+                //ATAQUE ESPECIA
                 let atkesp = document.createElement('p');
                 atkesp.innerText = r.stats[3].base_stat;
                 ataqueEsp.append(atkesp)
 
-                //defesa
+                //DEFESA
                 let def = document.createElement('p');
                 def.innerText = r.stats[2].base_stat;
                 defesa.append(def)
 
-                //defesa especial
+                //DEFESA ESPECIAL
                 let desfesp = document.createElement('p');
                 desfesp.innerText = r.stats[4].base_stat;
                 defesaEsp.append(desfesp)
 
-                //velocidade
+                //VELOCIDADE
                 let vel = document.createElement('p');
                 vel.innerText = r.stats[5].base_stat;
                 velocidade.append(vel)
 
-                //skills
+                //TOOLTIP
                 let tooltip = document.querySelector('.tooltip'),
                     span = tooltip.querySelector('span');
                 ['click', 'mouseover'].forEach(evt => {
@@ -108,29 +109,50 @@ function procura() {
 
                 })
 
-                for (let i = 0; i < 4; i++) {
-                    let skillCom = document.createElement('li'),
-                        skillnome = document.createElement('h3'),
-                        skillAcc = document.createElement('p'),
-                        skillDC = document.createElement('p'),
-                        skillEx = document.createElement('p');
+                //HABILIDADES
+                for (let i = 0; i < 2; i++) {
+                    let skillnome = document.createElement('h3'),
+                    skillex = document.createElement('p'),
+                    skillCom = document.createElement('li');
 
-                    skillnome.innerText = r.moves[i].move.name;
+                    let limpezaNome = r.abilities[i].ability.name.charAt(0).toUpperCase() +  r.abilities[i].ability.name.slice(1).replace('-', ' ');
+                    skillnome.innerText = limpezaNome;
+                    skillCom.append(skillnome)
+                    fetch(r.abilities[i].ability.url).then(r => r.json())
+                    .then(r => {
+                        let limpezaEx = r.effect_entries[1].effect.replace(/(?:\r\n|\r|\n)/g, ' ');
+                        skillex.innerText = limpezaEx;
+                        skillCom.append(skillex)
+                    })
+                    skills.append(skillCom)
+                }
+
+                //ATAQUES
+                for (let i = 0; i < 4; i++) {
+                    let ataqueCom = document.createElement('li'),
+                        ataquenome = document.createElement('h3'),
+                        ataqueAcc = document.createElement('p'),
+                        ataqueDC = document.createElement('p'),
+                        ataqueEx = document.createElement('p');
+
+                    let limpezaNome = r.moves[i].move.name.charAt(0).toUpperCase() + r.moves[i].move.name.slice(1).replace('-', ' ');
+                    ataquenome.innerText = limpezaNome;
+
                     fetch(r.moves[i].move.url).then(r => r.json())
                         .then(r => {
                             let limpezaDC = r.damage_class.name.charAt(0).toUpperCase() + r.damage_class.name.slice(1);
                             let limpezaEx = r.effect_entries[0].effect.replace(/(?:\r\n|\r|\n)/g, ' ');
-                            skillAcc.innerHTML = `<span>Accuracy:</span> ${r.accuracy}`;
-                            skillDC.innerHTML = `<span>Damage class:</span> ${limpezaDC}`;
-                            skillEx.innerHTML = `<p>${limpezaEx}</p>`;
+                            ataqueAcc.innerHTML = `<span>Accuracy:</span> ${r.accuracy}`;
+                            ataqueDC.innerHTML = `<span>Damage class:</span> ${limpezaDC}`;
+                            ataqueEx.innerHTML = `<p>${limpezaEx}</p>`;
 
-                            [skillnome, skillEx, skillAcc, skillDC].forEach(e => skillCom.append(e))
+                            [ataquenome, ataqueEx, ataqueAcc, ataqueDC].forEach(e => ataqueCom.append(e))
                         })
 
-                    skills.append(skillCom)
+                    ataques.append(ataqueCom)
                 }
 
-                //Localizações
+                //LOCALIZAÇÃO
                 fetch(`https://pokeapi.co/api/v2/pokemon/${r.id}/encounters`)
                     .then(r => r.json())
                     .then(l => {
