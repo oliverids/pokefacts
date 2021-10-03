@@ -6,26 +6,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.min.css">
-    <title>Teste</title>
+    <link rel="shortcut icon" href="#">
+    <script src="https://kit.fontawesome.com/0a7be9467a.js" crossorigin="anonymous"></script>
+    <title>PokeFacts</title>
 </head>
 
 <body>
-    <section>
-        <div class="pesquisa">
-            <input type="text">
-            <button>!!</button>
+    <section id="busca">
+        <div class="container">
+            <div>
+                <input type="search" placeholder="Procure um Pokemon...">
+                <button><span>Pesquisar</span><i class="fas fa-search fa-lg"></i></button>
+            </div>
         </div>
-        <p id="loader">Carregando...</p>
-        <div class="info">
-            <div class="foto">
+    </section>
+
+    <section id="pokemon">
+        <div class="container">
+            <div id="loader">
+                <i class="fas fa-circle-notch fa-3x"></i>
             </div>
-            <div class="vida">
-                <p>Vida</p>
-                <p class="num"></p>
-            </div>
-            <div class="local">
-                <p>Localização</p>
-                <div class="lop"></div>
+
+            <div class="info">
+                <div class="foto"></div>
+
+                <div class="stats">
+                    <h2>Stats</h2>
+                    <ul>
+                        <li class="vida">
+                            <h3>Vida</h3>
+                            <div class="vida-p"></div>
+                        </li>
+
+                        <li class="ataque">
+                            <h3>Ataque</h3>
+                            <div class="ataque-p"></div>
+                        </li>
+
+                        <li class="ataque-esp">
+                            <h3>Ataque Especial</h3>
+                            <div class="ataque-esp-p"></div>
+                        </li>
+
+                        <li class="defesa">
+                            <h3>Defesa</h3>
+                            <div class="defesa-p"></div>
+                        </li>
+
+                        <li class="defesa-esp">
+                            <h3>Defesa Especial</h3>
+                            <div class="defesa-esp-p"></div>
+                        </li>
+
+                        <li class="velocidade">
+                            <h3>Velocidade</h3>
+                            <div class="velocidade-p"></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="local">
+                    <h3>Localização</h3>
+                    <div class="lop"></div>
+                </div>
             </div>
         </div>
     </section>

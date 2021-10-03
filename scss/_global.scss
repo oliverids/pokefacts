@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+$cor1: #ececec;
+$cor2: #a0a0a0;
+$cor3: #636363;
+$cor4: #2b2b2b;
+
+body {
+    font-size: 16px;
+    color: $cor4;
+}
+
+*:focus {
+    outline-color: $cor2;
+}
+
+ul {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    line-height: 1.5;
+}
+
+.container {
+    display: flex;
+    padding: 0 1rem;
+}
+
+section {
+    padding: 22px 0;
+}
+

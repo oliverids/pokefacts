@@ -1,0 +1,30 @@
+#pokemon {
+    .container {
+        position: relative;
+        flex: auto;
+
+        @import "loader";
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            visibility: hidden;
+            height: 0;
+            margin: 0;
+            width: 0;
+
+            &.show {
+                visibility: visible;
+                height: auto;
+                width: 100%;
+            }
+
+            .foto {
+                display: flex;
+                justify-content: space-around;
+            }
+
+            @import "stats";
+        }
+    }
+}

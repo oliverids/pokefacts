@@ -1,0 +1,21 @@
+.stats {
+    margin-bottom: 20px;
+    h2 {
+        margin-bottom: 22px;
+    }
+
+    ul {
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 8px;
+            border-bottom: 0.4px solid $cor3;
+
+
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+    }
+}

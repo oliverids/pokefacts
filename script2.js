@@ -1,5 +1,5 @@
 let input = document.querySelector('input'),
-    btn = document.querySelector('button'),
+    btn = document.querySelector('#busca button'),
     info = document.querySelector('.info'),
     keyword,
     valor, ultimoValor,
@@ -27,17 +27,20 @@ input.addEventListener('input', () => {
 })
 
 function procura() {
+    let vida = document.querySelector('.vida'),
+    loc = document.querySelector('.lop'),
+    img = document.querySelector('.foto');
+    // [loc, img, vida].forEach(e => e.innerHTML = '')
+
     if (valor == ultimoValor) {
         loading();
         fetch(`https://pokeapi.co/api/v2/pokemon/${keyword}/`)
             .then(r => r.json())
             .then(r => {
-                let vida = document.querySelector('.num'),
-                    loc = document.querySelector('.lop'),
-                    img = document.querySelector('.foto');
-
                 //vida
-                vida.innerText = r.stats[0].base_stat;
+                let hp = document.createElement('p');
+                hp = innerText = r.stats[0].base_stat;
+                vida.append(hp) 
 
                 //foto
                 for (let i = 0; i < 1; i++) {
