@@ -18,7 +18,13 @@
             button {
                 background: none;
                 border: none;
+                border-radius: 2px;
                 padding: 12px;
+                cursor: pointer;
+
+                &:active {
+                    background: rgba(0, 58, 112, 0.2);
+                }
 
                 span {
                     position: absolute;

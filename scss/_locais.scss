@@ -1,0 +1,11 @@
+.local {
+    ul {
+        li {
+            margin-bottom: 0.8rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

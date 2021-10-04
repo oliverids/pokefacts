@@ -1,0 +1,53 @@
+main {
+    background: linear-gradient(180deg, #003a70 0%, #cf503f 67.14%, #ffcb05 100%, rgba(210, 210, 210, 0) 100%);
+    color: #fff;
+    padding: 0 0 30px 0;
+    margin-bottom: 22px;
+
+    .container {
+        flex-direction: column;
+        justify-content: space-between;
+        height: 600px;
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        section {
+            max-width: 400px;
+
+            .nome {
+                margin-bottom: 0.8rem;
+            }
+
+            a {
+                font-weight: 500;
+                text-underline-offset: 2px;
+                color: #fff;
+            }
+        }
+
+        #scrolldown {
+            background: #fff;
+            color: $cor4;
+            border: none;
+            border-radius: 4px;
+            padding: 20px 32px;
+            width: 180px;
+            align-self: center;
+            cursor: pointer;
+
+            span {
+                font-size: 1rem;
+                font-weight: 700;
+            }
+
+            i {
+                margin-left: 8px;
+            }
+        }
+    }
+}

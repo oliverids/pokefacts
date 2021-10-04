@@ -9,6 +9,7 @@
     height: 0;
     opacity: 0;
     transition: opacity 1s ease-in-out;
+    color: linear-gradient(180deg, #003a70 0%, #cf503f 67.14%, #ffcb05 100%, rgba(210, 210, 210, 0) 100%);
 
     @keyframes rotation {
         from {

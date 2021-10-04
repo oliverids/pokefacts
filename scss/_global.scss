@@ -6,10 +6,10 @@
     padding: 0;
 }
 
-$cor1: #ececec;
+$cor1: rgb(231, 243, 255);
 $cor2: #a0a0a0;
 $cor3: #636363;
-$cor4: #2b2b2b;
+$cor4: rgb(0, 58, 112);
 
 body {
     font-size: 16px;
@@ -18,7 +18,7 @@ body {
 }
 
 *:focus {
-    outline-color: $cor2;
+    outline-color: rgba(0, 58, 112, 0.4);
 }
 
 ul {
@@ -67,10 +67,14 @@ article {
     margin-left: 1rem;
     position: relative;
 
+    i {
+        color: #cf503f;
+    }
+
     span {
         position: absolute;
-        background: #2b2b2b;
-        color: #ededed;
+        background: $cor4;
+        color: #fff;
         border-radius: 4px;
         box-shadow: 0 0 10px rgba(0, 0, 0, .2);
         text-align: center;

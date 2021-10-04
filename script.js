@@ -1,3 +1,20 @@
+document.addEventListener('DOMContentLoaded', () => {
+    let topo = document.body;
+    topo.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    })
+})
+
+let scrolldown = document.getElementById('scrolldown');
+scrolldown.addEventListener('click', () => {
+    let topo = document.getElementById('busca');
+    topo.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    })
+})
+
 let input = document.querySelector('input'),
     btn = document.querySelector('#busca button'),
     info = document.querySelector('.info'),
@@ -162,7 +179,7 @@ function procura() {
                         }
 
                         locations.forEach(e => {
-                            let limpeza = e.replace('-', ' ').slice(0, e.length - 5);
+                            let limpeza = e.charAt(0).toUpperCase() + e.slice(1).slice(0, e.length - 6).replace('-', ' ');
 
                             let local = document.createElement('p');
                             local.innerText = limpeza;
