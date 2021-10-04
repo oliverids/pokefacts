@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 
 * {
     box-sizing: border-box;
@@ -14,7 +14,12 @@ $cor4: rgb(0, 58, 112);
 body {
     font-size: 16px;
     color: $cor4;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
 }
 
 *:focus {
@@ -76,7 +81,7 @@ article {
         background: $cor4;
         color: #fff;
         border-radius: 4px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         text-align: center;
         width: 180px;
         left: 2px;
@@ -84,13 +89,13 @@ article {
         visibility: hidden;
         height: 0;
         padding: 0;
-        transition: all .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
 
         &.ativo {
             visibility: visible;
             height: auto;
             padding: 8px 4px;
-            transition: all .3s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
     }
 }

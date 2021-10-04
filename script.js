@@ -39,13 +39,16 @@ input.addEventListener('input', () => {
 
     if (keyword.length !== 0) {
         btn.addEventListener('click', procura)
-        // window.addEventListener('keyup', e => {
-        //     if (e.keyCode == 13) procura();
-        // })
     }
 })
 
 function procura() {
+    let topo = document.getElementById('busca');
+    topo.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    })
+
     let img = document.querySelector('.foto'),
         tipo = document.querySelector('.tipo'),
         vida = document.querySelector('.vida-p'),
@@ -116,14 +119,15 @@ function procura() {
                 velocidade.append(vel)
 
                 //TOOLTIP
-                let tooltip = document.querySelector('.tooltip'),
-                    span = tooltip.querySelector('span');
-                ['click', 'mouseover'].forEach(evt => {
-                    tooltip.addEventListener(evt, () => {
-                        span.classList.add("ativo");
-                        setTimeout(() => span.classList.remove("ativo"), 2000);
+                let tooltip = document.querySelectorAll('.tooltip');
+                tooltip.forEach(e => {
+                    let span = e.querySelector("span");
+                    e.addEventListener('click', () => {
+                        span.classList.add('ativo');
+                        setTimeout(() => {
+                            span.classList.remove("ativo")
+                        }, 2000);
                     })
-
                 })
 
                 //HABILIDADES
