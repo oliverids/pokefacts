@@ -12,7 +12,7 @@ window.addEventListener('scroll', () => {
         buscatopo = busca.top,
         footer = document.querySelector('footer');
     
-    if(buscatopo < 120) {
+    if(buscatopo < 300) {
         footer.classList.add('show');
     } else {
         footer.classList.remove('show');
