@@ -1,7 +1,7 @@
 #loader {
     position: absolute;
     left: 50%;
-    margin-left: -24px;
+    margin-left: -28px;
     top: 100px;
     animation: rotation 0.7s infinite linear;
     visibility: hidden;
@@ -9,7 +9,14 @@
     height: 0;
     opacity: 0;
     transition: opacity 1s ease-in-out;
-    color: linear-gradient(180deg, #003a70 0%, #cf503f 67.14%, #ffcb05 100%, rgba(210, 210, 210, 0) 100%);
+
+    i {
+        background: linear-gradient(180deg, #003a70, #eb1f04);
+        opacity: .6;
+        color: #fff;
+        border-radius: 50%;
+        padding: 4px;
+    }
 
     @keyframes rotation {
         from {

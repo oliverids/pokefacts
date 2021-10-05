@@ -1,11 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-    let topo = document.body;
-    topo.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    })
-})
-
 let scrolldown = document.getElementById('scrolldown');
 scrolldown.addEventListener('click', () => {
     let topo = document.getElementById('busca');
@@ -13,6 +5,18 @@ scrolldown.addEventListener('click', () => {
         behavior: 'smooth',
         block: 'start'
     })
+})
+
+window.addEventListener('scroll', () => {
+    let busca = document.getElementById('busca').getBoundingClientRect(),
+        buscatopo = busca.top,
+        footer = document.querySelector('footer');
+    
+    if(buscatopo < 120) {
+        footer.classList.add('show');
+    } else {
+        footer.classList.remove('show');
+    }
 })
 
 let voltatopo = document.getElementById('voltatopo');
