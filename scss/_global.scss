@@ -7,6 +7,8 @@
 }
 
 $cor1: rgb(241, 248, 255);
+$cor2: rgb(0, 89, 173);
+$cor3: rgb(38, 84, 126);
 $cor4: rgb(0, 58, 112);
 $cor5: rgb(0, 26, 49);
 
@@ -43,10 +45,13 @@ h1 {
 
 h2 {
     font-size: 1.6rem;
+    color: $cor2;
 }
 
 h3 {
     font-size: 1.2rem;
+    color: $cor3;
+
 }
 
 .container {
@@ -65,9 +70,10 @@ article {
 .tooltip {
     margin-left: 1rem;
     position: relative;
+    cursor: pointer;
 
     i {
-        color: #cf503f;
+        color: rgb(226, 133, 121);
     }
 
     span {

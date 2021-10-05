@@ -1,4 +1,9 @@
 .local {
+    .titulo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
     ul {
         li {
             margin-bottom: 0.8rem;
