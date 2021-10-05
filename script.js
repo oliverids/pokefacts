@@ -11,8 +11,8 @@ window.addEventListener('scroll', () => {
     let busca = document.getElementById('busca').getBoundingClientRect(),
         buscatopo = busca.top,
         footer = document.querySelector('footer');
-    
-    if(buscatopo < -100) {
+
+    if (buscatopo < -100) {
         footer.classList.add('show');
     } else {
         footer.classList.remove('show');
@@ -55,6 +55,10 @@ input.addEventListener('input', () => {
     }
 })
 
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 function procura() {
     let topo = document.getElementById('busca');
     topo.scrollIntoView({
@@ -74,7 +78,7 @@ function procura() {
         skills = document.querySelector('.skills ul'),
         loc = document.querySelector('.lop');
 
-    [loc, img, vida, ataque, ataqueEsp, defesa, defesaEsp, velocidade, ataques].forEach(e => e.innerHTML = '');
+    [img, tipo, vida, ataque, ataqueEsp, defesa, defesaEsp, velocidade, ataques, skills, loc].forEach(e => e.innerHTML = '');
 
     if (valor == ultimoValor) {
         loading();
@@ -146,18 +150,21 @@ function procura() {
                 //HABILIDADES
                 for (let i = 0; i < 2; i++) {
                     let skillnome = document.createElement('h3'),
-                    skillex = document.createElement('p'),
-                    skillCom = document.createElement('li');
+                        skillCom = document.createElement('li');
 
-                    let limpezaNome = r.abilities[i].ability.name.charAt(0).toUpperCase() +  r.abilities[i].ability.name.slice(1).replace('-', ' ');
+                    let limpezaNome = r.abilities[i].ability.name.replace('-', ' ').split(' ').map(capitalize).join(' ');
+
                     skillnome.innerText = limpezaNome;
                     skillCom.append(skillnome)
                     fetch(r.abilities[i].ability.url).then(r => r.json())
-                    .then(r => {
-                        let limpezaEx = r.effect_entries[1].effect.replace(/(?:\r\n|\r|\n)/g, ' ');
-                        skillex.innerText = limpezaEx;
-                        skillCom.append(skillex)
-                    })
+                        .then(r => {
+                            let limpezaEx = r.effect_entries[1].effect.replace(/(?:\r\n|\r|\n)/g, '<br>').split('<br><br>');
+                            limpezaEx.forEach(e => {
+                                let skillex = document.createElement('p');
+                                skillex.innerText = e;
+                                skillCom.append(skillex)
+                            })
+                        })
                     skills.append(skillCom)
                 }
 
@@ -169,12 +176,12 @@ function procura() {
                         ataqueDC = document.createElement('p'),
                         ataqueEx = document.createElement('p');
 
-                    let limpezaNome = r.moves[i].move.name.charAt(0).toUpperCase() + r.moves[i].move.name.slice(1).replace('-', ' ');
+                    let limpezaNome = r.moves[i].move.name.replace('-', ' ').split(' ').map(capitalize).join(' ');
                     ataquenome.innerText = limpezaNome;
 
                     fetch(r.moves[i].move.url).then(r => r.json())
                         .then(r => {
-                            let limpezaDC = r.damage_class.name.charAt(0).toUpperCase() + r.damage_class.name.slice(1);
+                            let limpezaDC = r.damage_class.name.split(' ').map(capitalize).join(' ');
                             let limpezaEx = r.effect_entries[0].effect.replace(/(?:\r\n|\r|\n)/g, ' ');
                             ataqueAcc.innerHTML = `<span>Accuracy:</span> ${r.accuracy}`;
                             ataqueDC.innerHTML = `<span>Damage class:</span> ${limpezaDC}`;
@@ -191,15 +198,15 @@ function procura() {
                     .then(r => r.json())
                     .then(l => {
                         let locations = [];
-                        for (let i = 0; i < l.length; i++) {
+                        for (let i = 0; i < 3; i++) {
                             locations.push(l[i].location_area.name)
                         }
 
                         locations.forEach(e => {
-                            let limpeza = e.charAt(0).toUpperCase() + e.slice(1).slice(0, e.length - 6).replace('-', ' ');
+                            let LimpezaCap = e.replaceAll('-', ' ').split(' ').map(capitalize).join(' ');
 
-                            let local = document.createElement('p');
-                            local.innerText = limpeza;
+                            let local = document.createElement('li');
+                            local.innerHTML = `<p>${LimpezaCap}</p>`;
                             loc.appendChild(local)
                         })
                     })
@@ -209,5 +216,4 @@ function procura() {
     }
 }
 
-//bulbasaur
 

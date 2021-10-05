@@ -1,5 +1,7 @@
 #busca {
     .container {
+        flex-direction: column;
+
         div {
             display: flex;
             width: 100%;
@@ -34,6 +36,20 @@
                 i {
                     color: $cor4;
                 }
+            }
+        }
+
+        #erro {
+            color: rgb(207, 80, 63);
+            font-weight: 500;
+            margin-top: 0;
+            padding: 0;
+            visibility: hidden;
+
+            &.ativo {
+                visibility: visible;
+                padding: 0 4px;
+                margin-top: 1rem;
             }
         }
     }
