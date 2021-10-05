@@ -15,6 +15,15 @@ scrolldown.addEventListener('click', () => {
     })
 })
 
+let voltatopo = document.getElementById('voltatopo');
+voltatopo.addEventListener('click', () => {
+    let topo = document.body;
+    topo.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    })
+})
+
 let input = document.querySelector('input'),
     btn = document.querySelector('#busca button'),
     info = document.querySelector('.info'),

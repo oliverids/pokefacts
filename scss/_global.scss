@@ -7,19 +7,13 @@
 }
 
 $cor1: rgb(231, 243, 255);
-$cor2: #a0a0a0;
-$cor3: #636363;
 $cor4: rgb(0, 58, 112);
+$cor5: rgb(0, 26, 49);
 
 body {
     font-size: 16px;
-    color: $cor4;
+    color: $cor5;
     font-family: "Roboto", sans-serif;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
 }
 
 *:focus {
@@ -43,7 +37,7 @@ h3 {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
 }
 

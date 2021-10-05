@@ -13,10 +13,24 @@
             margin: 0;
             width: 0;
 
+            article {
+                height: 0;
+                margin: 0;
+                width: 0;
+                padding: 0;
+            }
+
             &.show {
                 visibility: visible;
                 height: auto;
                 width: 100%;
+                padding-bottom: 44px;
+
+                article {
+                    height: auto;
+                    margin-bottom: 20px;
+                    width: auto;
+                }
             }
 
             .foto {
