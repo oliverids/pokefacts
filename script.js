@@ -21,7 +21,7 @@ window.addEventListener('scroll', () => {
 
 let voltatopo = document.getElementById('voltatopo');
 voltatopo.addEventListener('click', () => {
-    let topo = document.body;
+    let topo = document.getElementById('busca');
     topo.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
@@ -44,14 +44,6 @@ input.addEventListener('input', () => {
         btn.addEventListener('click', procura)
     }
 })
-
-function loading() {
-    loader.classList.add('ativo');
-    setTimeout(() => {
-        loader.classList.remove('ativo')
-        info.classList.add('show');
-    }, 1200);
-}
 
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -79,18 +71,14 @@ function procura() {
     [img, tipo, vida, ataque, ataqueEsp, defesa, defesaEsp, velocidade, ataques, skills, loc].forEach(e => e.innerHTML = '');
 
     if (valor == ultimoValor) {
-    info.classList.remove('show');
+        info.classList.remove('show');
+        loader.classList.add('ativo');
         fetch(`https://pokeapi.co/api/v2/pokemon/${keyword}/`)
             .then(r => {
                 if (!r.ok) {
-                    loader.classList.add('ativo');
-                    setTimeout(() => {
-                        loader.classList.remove('ativo')
-                        info.classList.remove('show');
-                        erro.classList.add("ativo");
-                        throw new Error('alguma coisa deu errado');
-                    }, 1200);
-
+                    loader.classList.remove('ativo');
+                    erro.classList.add("ativo");
+                    throw new Error('alguma coisa deu errado');
                 } else {
                     erro.classList.remove("ativo");
                     return r;
@@ -98,8 +86,11 @@ function procura() {
             })
             .then(r => r.json())
             .then(r => {
-                loading();
-                
+                setTimeout(() => {
+                    loader.classList.remove('ativo');
+                    info.classList.add('show');
+                }, 1000);
+
                 //FOTOS
                 for (let i = 0; i < 1; i++) {
                     let fotos = [r.sprites.front_default, r.sprites.back_default];
