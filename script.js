@@ -160,48 +160,56 @@ function procura() {
 
                 //HABILIDADES
                 for (let i = 0; i < 2; i++) {
-                    let skillnome = document.createElement('h3'),
-                        skillCom = document.createElement('li');
+                    if (i !== r.abilities.length) {
+                        let skillnome = document.createElement('h3'),
+                            skillCom = document.createElement('li');
 
-                    let limpezaNome = r.abilities[i].ability.name.replace('-', ' ').split(' ').map(capitalize).join(' ');
+                        let limpezaNome = r.abilities[i].ability.name.replace('-', ' ').split(' ').map(capitalize).join(' ');
 
-                    skillnome.innerText = limpezaNome;
-                    skillCom.append(skillnome)
-                    fetch(r.abilities[i].ability.url).then(r => r.json())
-                        .then(r => {
-                            let limpezaEx = r.effect_entries[1].effect.replace(/(?:\r\n|\r|\n)/g, '<br>').split('<br><br>');
-                            limpezaEx.forEach(e => {
-                                let skillex = document.createElement('p');
-                                skillex.innerText = e;
-                                skillCom.append(skillex)
+                        skillnome.innerText = limpezaNome;
+                        skillCom.append(skillnome)
+                        fetch(r.abilities[i].ability.url).then(r => r.json())
+                            .then(r => {
+                                let limpezaEx = r.effect_entries[1].effect.replace(/(?:\r\n|\r|\n)/g, '<br>').split('<br><br>');
+                                limpezaEx.forEach(e => {
+                                    let skillex = document.createElement('p');
+                                    skillex.innerText = e;
+                                    skillCom.append(skillex)
+                                })
                             })
-                        })
-                    skills.append(skillCom)
+                        skills.append(skillCom)
+                    } else {
+                        break;
+                    }
                 }
 
                 //ATAQUES
                 for (let i = 0; i < 4; i++) {
-                    let ataqueCom = document.createElement('li'),
-                        ataquenome = document.createElement('h3'),
-                        ataqueAcc = document.createElement('p'),
-                        ataqueDC = document.createElement('p'),
-                        ataqueEx = document.createElement('p');
+                    if (i !== r.abilities.length) {
+                        let ataqueCom = document.createElement('li'),
+                            ataquenome = document.createElement('h3'),
+                            ataqueAcc = document.createElement('p'),
+                            ataqueDC = document.createElement('p'),
+                            ataqueEx = document.createElement('p');
 
-                    let limpezaNome = r.moves[i].move.name.replace('-', ' ').split(' ').map(capitalize).join(' ');
-                    ataquenome.innerText = limpezaNome;
+                        let limpezaNome = r.moves[i].move.name.replace('-', ' ').split(' ').map(capitalize).join(' ');
+                        ataquenome.innerText = limpezaNome;
 
-                    fetch(r.moves[i].move.url).then(r => r.json())
-                        .then(r => {
-                            let limpezaDC = r.damage_class.name.split(' ').map(capitalize).join(' ');
-                            let limpezaEx = r.effect_entries[0].effect.replace(/(?:\r\n|\r|\n)/g, ' ');
-                            ataqueAcc.innerHTML = `<span>Accuracy:</span> ${r.accuracy}`;
-                            ataqueDC.innerHTML = `<span>Damage class:</span> ${limpezaDC}`;
-                            ataqueEx.innerHTML = `<p>${limpezaEx}</p>`;
+                        fetch(r.moves[i].move.url).then(r => r.json())
+                            .then(r => {
+                                let limpezaDC = r.damage_class.name.split(' ').map(capitalize).join(' ');
+                                let limpezaEx = r.effect_entries[0].effect.replace(/(?:\r\n|\r|\n)/g, ' ');
+                                ataqueAcc.innerHTML = `<span>Accuracy:</span> ${r.accuracy}`;
+                                ataqueDC.innerHTML = `<span>Damage class:</span> ${limpezaDC}`;
+                                ataqueEx.innerHTML = `<p>${limpezaEx}</p>`;
 
-                            [ataquenome, ataqueEx, ataqueAcc, ataqueDC].forEach(e => ataqueCom.append(e))
-                        })
+                                [ataquenome, ataqueEx, ataqueAcc, ataqueDC].forEach(e => ataqueCom.append(e))
+                            })
 
-                    ataques.append(ataqueCom)
+                        ataques.append(ataqueCom)
+                    } else {
+                        break;
+                    }
                 }
 
                 //LOCALIZAÇÃO
@@ -209,8 +217,12 @@ function procura() {
                     .then(r => r.json())
                     .then(l => {
                         let locations = [];
-                        for (let i = 0; i < 3; i++) {
-                            locations.push(l[i].location_area.name)
+                        for (let i = 0; i < 4; i++) {
+                            if (i !== l.length) {
+                                locations.push(l[i].location_area.name)
+                            } else {
+                                break;
+                            }
                         }
 
                         locations.forEach(e => {
@@ -222,7 +234,6 @@ function procura() {
                         })
                     })
                 valor++;
-
             })
     }
 }
