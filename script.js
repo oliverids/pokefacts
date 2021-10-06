@@ -45,6 +45,12 @@ input.addEventListener('input', () => {
     }
 })
 
+window.addEventListener('keyup', e => {
+    if (input.value.length !== 0 && e.keyCode === 13) {
+        procura();
+    }
+})
+
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
