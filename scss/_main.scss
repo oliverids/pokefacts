@@ -7,6 +7,12 @@ main {
         flex-direction: column;
         justify-content: space-between;
         height: 600px;
+        transition: 0.3s ease-in-out;
+
+        @media only screen and(min-width: 768px) {
+            height: 530px;
+            transition: 0.3s ease-in-out;
+        }
 
         header {
             display: flex;

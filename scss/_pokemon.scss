@@ -25,6 +25,18 @@
                 height: auto;
                 width: 100%;
                 padding-bottom: 44px;
+                transition: 0.3s ease-in-out;
+
+                @media only screen and(min-width: 580px) {
+                    width: 548px;
+                    margin: 0 auto;
+                    transition: 0.3s ease-in-out;
+                }
+
+                @media only screen and(min-width: 1000px) {
+                    width: 800px;
+                    transition: 0.3s ease-in-out;
+                }
 
                 article {
                     height: auto;
